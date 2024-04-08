@@ -21,10 +21,21 @@
     font-size: 1rem;
     font-weight: normal;
     color: #fff;
+    line-height: 1;
 }
 
 .singleTask a {
     color: #fff;
+    margin-left: .3rem;
+}
+
+.singleTask .check {
+    width: 20px;
+}
+
+.singleTask:has(.check svg) h2 {
+    color: #6a6a6a;
+    text-decoration: line-through;
 }
 
 .taskLinks a {
