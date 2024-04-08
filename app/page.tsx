@@ -2,6 +2,10 @@
 import styles from "./page.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 interface Todo {
   id: number;
@@ -35,6 +39,7 @@ export default function Home() {
             <div className={styles.singleTask} key={todo.id}>
               <div className={styles.taskName}>
                 <span className="check">
+                  <FontAwesomeIcon icon={faCheck} color="#fff"/>
                 </span>
                 <h2>
                   <a href={todo.url} target="_blank">{todo.name}</a>
@@ -42,10 +47,10 @@ export default function Home() {
               </div>
               <div className={styles.taskLinks}>
                 <button className={styles.editLink}>
-                  edit
+                  <FontAwesomeIcon icon={faPenToSquare} color="#fff"/>
                 </button>
                 <button type="submit" className={styles.deleteBtn}>
-                  delete
+                  <FontAwesomeIcon icon={faTrash} color="#fff"/>
                 </button>
               </div>
             </div>
