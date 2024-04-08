@@ -1,5 +1,6 @@
 "use client";
 import styles from "./page.module.css";
+import Link from 'next/link'
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -42,7 +43,7 @@ export default function Home() {
                   <FontAwesomeIcon icon={faCheck} />
                 </span>
                 <h2>
-                  <a href={todo.url} target="_blank">{todo.name}</a>
+                  <Link href={todo.url} target="_blank">{todo.name}</Link>
                 </h2>
               </div>
               <div className={styles.taskLinks}>
