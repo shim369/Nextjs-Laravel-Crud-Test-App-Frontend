@@ -34,7 +34,7 @@
 
 .singleTask:has(.check svg) h2 {
     color: #6a6a6a;
-    text-decoration: line-through;
+    /* text-decoration: line-through; */
 }
 
 .taskLinks a {
