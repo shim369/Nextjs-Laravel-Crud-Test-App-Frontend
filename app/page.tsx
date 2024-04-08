@@ -38,8 +38,8 @@ export default function Home() {
           {todos.map((todo) => (
             <div className={styles.singleTask} key={todo.id}>
               <div className={styles.taskName}>
-                <span className="check">
-                  <FontAwesomeIcon icon={faCheck} color="#fff"/>
+                <span className={styles.check}>
+                  <FontAwesomeIcon icon={faCheck} />
                 </span>
                 <h2>
                   <a href={todo.url} target="_blank">{todo.name}</a>
@@ -47,10 +47,10 @@ export default function Home() {
               </div>
               <div className={styles.taskLinks}>
                 <button className={styles.editLink}>
-                  <FontAwesomeIcon icon={faPenToSquare} color="#fff"/>
+                  <FontAwesomeIcon icon={faPenToSquare} />
                 </button>
                 <button type="submit" className={styles.deleteBtn}>
-                  <FontAwesomeIcon icon={faTrash} color="#fff"/>
+                  <FontAwesomeIcon icon={faTrash} />
                 </button>
               </div>
             </div>
