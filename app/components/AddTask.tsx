@@ -2,13 +2,13 @@ import { useState, ChangeEvent, FormEvent } from "react";
 import styles from "../page.module.css";
 import axios from 'axios';
 
-interface Task {
+interface Todo {
     name: string;
     url: string;
 }
 
 export default function AddTask() {
-    const [task, setTask] = useState<Task>({ name: '', url: '' });
+    const [task, setTask] = useState<Todo>({ name: '', url: '' });
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -57,7 +57,7 @@ export default function AddTask() {
                         <li></li>
                     </ul>
                 </div>
-                <button type="submit" className={styles.formSubmit}>submit</button>
+                <button type="submit" className={styles.formSubmit}>Submit</button>
             </div>
         </form>
     );
