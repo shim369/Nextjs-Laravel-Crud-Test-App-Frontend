@@ -55,9 +55,9 @@ export default function TaskList() {
                         </h2>
                     </div>
                     <div className={styles.taskLinks}>
-                        <button className={styles.editLink}>
+                        <Link className={styles.editLink} href={`edit/${todo.id}`}>
                             <FontAwesomeIcon icon={faPenToSquare} />
-                        </button>
+                        </Link>
                         <button type="submit" onClick={() => deleteTask(todo.id)} className={styles.deleteBtn}>
                             <FontAwesomeIcon icon={faTrash} />
                         </button>
