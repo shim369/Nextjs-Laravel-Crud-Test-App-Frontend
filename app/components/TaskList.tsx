@@ -30,6 +30,18 @@ export default function TaskList() {
         getAllTasks();
     }, []);
 
+    const deleteTask = async (id: Number) => {
+        let url = `http://127.0.0.1:8000/api/delete_task/${id}`;
+        try {
+            const response = await axios.delete(url);
+            if (response.data.code == 200) {
+                alert(response.data.message);
+            }
+        } catch(error){
+            console.log(error);
+        };
+    };
+
     return (
         <div className={styles.tasks}>
             {todos.map((todo) => (
@@ -46,7 +58,7 @@ export default function TaskList() {
                         <button className={styles.editLink}>
                             <FontAwesomeIcon icon={faPenToSquare} />
                         </button>
-                        <button type="submit" className={styles.deleteBtn}>
+                        <button type="submit" onClick={() => deleteTask(todo.id)} className={styles.deleteBtn}>
                             <FontAwesomeIcon icon={faTrash} />
                         </button>
                     </div>
