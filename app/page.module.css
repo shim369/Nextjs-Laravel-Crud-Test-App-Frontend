@@ -18,20 +18,42 @@
 
 .addBox {
     width: 100%;
-    display: flex;
-    flex-direction: column;
     color: #fff;
 }
 
+.addBox .taskId {
+    display: flex;
+    justify-content: f;
+    margin-bottom: 1rem;
+}
+
+.addBox label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.addBox input {
+    margin-bottom: 1rem;
+}
+
+.addBox label span {
+    width: 20%;
+    margin-right: .3rem;
+    display: block;
+    text-align: left;
+}
+
 .addBox input[type="text"] {
-    width: 100%;
-    all: unset;
+    width: 80%;
+    border: none;
     padding: 1rem 1.2rem;
     text-align: left;
     color: #fff;
     border-bottom: 1px solid var(--light-gray);
     background: var(--dark-black);
 }
+
 .addBox input[type="text"]:focus {
     background: var(--light-black);
     border-bottom: 1px solid var(--dark-black);
@@ -63,6 +85,7 @@ button.formSubmit:hover {
     color: var(--yellow);
     margin-bottom: .3rem;
 }
+
 .editTitle span {
     display: block;
 }
@@ -78,6 +101,7 @@ button.formSubmit:hover {
     width: 100%;
     margin-bottom: 2rem;
 }
+
 .editInputBox label {
     display: flex;
     flex-direction: column;
@@ -92,6 +116,7 @@ button.formSubmit:hover {
     border-bottom: 1px solid var(--light-gray);
     background: var(--dark-black);
 }
+
 .editInputBox input[type="text"]:focus {
     background: var(--light-black);
     border-bottom: 1px solid var(--dark-black);
@@ -168,4 +193,16 @@ button.formSubmit:hover {
     cursor: pointer;
     color: #fff;
     transition: all .4s ease-in-out;
+}
+
+.formSubmit {
+    display: flex;
+    justify-content: center;
+    color: var(--yellow);
+    margin: 3rem auto 0;
+    transition: all .4s ease-in-out;
+}
+
+.formSubmit:hover {
+    opacity: .8;
 }
