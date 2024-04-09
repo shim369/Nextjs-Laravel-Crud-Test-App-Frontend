@@ -1,3 +1,122 @@
+.tasksContainer {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.title {
+    text-align: center;
+}
+
+.taskForm {
+    margin-top: 2rem;
+    text-align: center;
+    background: var(--deep-black);
+    padding: 3rem;
+    border-radius: 2px;
+    box-shadow: #302f2f 0px 8px 0px 0px;
+}
+
+.addBox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+}
+
+.addBox input[type="text"] {
+    width: 100%;
+    all: unset;
+    padding: 1rem 1.2rem;
+    text-align: left;
+    color: #fff;
+    border-bottom: 1px solid var(--light-gray);
+    background: var(--dark-black);
+}
+.addBox input[type="text"]:focus {
+    background: var(--light-black);
+    border-bottom: 1px solid var(--dark-black);
+}
+
+.addBox input[type="text"]:placeholder {
+    color: #606060;
+}
+
+button.formSubmit {
+    text-align: center;
+    all: unset;
+    background: var(--yellow);
+    padding: 1rem 2rem;
+    cursor: pointer;
+    border-radius: 2px;
+    color: var(--dark-gray);
+    width: 20%;
+    min-width: 80px;
+    margin: 3rem auto 0;
+    transition: all .4s ease-in-out;
+}
+
+button.formSubmit:hover {
+    opacity: .8;
+}
+
+.editTitle {
+    color: var(--yellow);
+    margin-bottom: .3rem;
+}
+.editTitle span {
+    display: block;
+}
+
+.editIdBox {
+    text-align: left;
+    margin-bottom: 2rem;
+    color: #fff;
+}
+
+.editInputBox {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+.editInputBox label {
+    display: flex;
+    flex-direction: column;
+}
+
+.editInputBox input[type="text"] {
+    width: 100%;
+    all: unset;
+    padding: 1rem 1.2rem;
+    text-align: left;
+    color: #fff;
+    border-bottom: 1px solid var(--light-gray);
+    background: var(--dark-black);
+}
+.editInputBox input[type="text"]:focus {
+    background: var(--light-black);
+    border-bottom: 1px solid var(--dark-black);
+}
+
+.editInputBox input[type="text"]:placeholder {
+    color: #606060;
+}
+
+.editCheckboxBox {
+    text-align: left;
+}
+
+.formAlert {
+    font-size: 1rem;
+    color: var(--yellow);
+    margin-top: 1rem;
+}
+
+.formAlert ul li {
+    list-style: none;
+    margin-top: 1rem;
+    color: var(--yellow);
+}
+
 .tasks {
     margin-top: 3rem;
 }
