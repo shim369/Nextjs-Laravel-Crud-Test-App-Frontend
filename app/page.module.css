@@ -33,10 +33,6 @@
     margin-bottom: 1rem;
 }
 
-.addBox input {
-    margin-bottom: 1rem;
-}
-
 .addBox label span {
     width: 20%;
     margin-right: .3rem;
@@ -169,16 +165,17 @@ button.formSubmit:hover {
 }
 
 .singleTask a {
-    color: #fff;
+    color: var(--yellow);
 }
 
 .singleTask .check {
     width: 20px;
+    line-height: 1;
 }
 
-.singleTask:has(.check svg) h2 {
+.singleTask:has(.check svg) h2 a {
     color: #6a6a6a;
-    /* text-decoration: line-through; */
+    text-decoration: line-through;
 }
 
 .taskLinks a {
