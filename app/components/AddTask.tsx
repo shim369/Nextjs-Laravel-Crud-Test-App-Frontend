@@ -1,14 +1,10 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import styles from "../page.module.css";
 import axios from 'axios';
-
-interface Todo {
-    name: string;
-    url: string;
-}
+import { Todo } from "@/types/todo";
 
 export default function AddTask() {
-    const [task, setTask] = useState<Todo>({ name: '', url: '' });
+    const [task, setTask] = useState<Todo>({ id: 0, name: '', url: '', completed: false });
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -25,17 +21,17 @@ export default function AddTask() {
             formData.append('name', task.name);
             formData.append('url', task.url);
             let url = 'http://127.0.0.1:8000/api/save_task';
-            await axios.post(url, formData).then((response) => {
-                console.log(response);
+            try {
+                const response = await axios.post(url, formData);
+                // console.log(response);
                 if (response.status == 200) {
-                    setTask({ name: '', url: '' });
                     alert(response.data.message);
                 } else {
                     console.log('error');
                 }
-            }).catch(error => {
+            } catch (error: any) {
                 errors.push(error.response);
-            });
+            }
         }
     }
 
@@ -50,8 +46,12 @@ export default function AddTask() {
     return (
         <form className={styles.taskForm} onSubmit={handleSubmit}>
             <div className={styles.addBox}>
-                <input type="text" name="name" className={styles.taskInput} onChange={handleInputChange} placeholder="Add Task Name" autoComplete="off" />
-                <input type="text" name="url" className={styles.taskInput} onChange={handleInputChange} placeholder="Add Task Url" autoComplete="off" />
+                <label htmlFor="name"><span>TASK NAME</span>
+                    <input type="text" id="name" name="name" className={styles.taskInput} onChange={handleInputChange} placeholder="Add Task Name" autoComplete="off" />
+                </label>
+                <label htmlFor="url"><span>TASK URL</span>
+                    <input type="text" id="url" name="url" className={styles.taskInput} onChange={handleInputChange} placeholder="Add Task Url" autoComplete="off" />
+                </label>
                 <div className={styles.formAlert}>
                     <ul>
                         <li></li>

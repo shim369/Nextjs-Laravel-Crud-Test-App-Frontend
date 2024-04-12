@@ -3,13 +3,7 @@ import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import styles from "../../page.module.css";
 import axios from "axios";
 import Link from "next/link";
-
-interface Todo {
-    id: number;
-    name: string;
-    url: string;
-    completed: boolean;
-}
+import { Todo } from "@/types/todo";
 
 type Props = {
     params: {
@@ -85,19 +79,19 @@ export default function Page({ params }: Props) {
                 <form className={styles.taskForm} onSubmit={updateTask}>
                     <div className={styles.addBox}>
                         <label>
-                        <span>ID</span>
-                        <div>{task.id}</div>
-                        </label>
-                        
-                        <label htmlFor="name"><span>NAME</span>
-                        <input type="text" id="name" name="name" className={styles.taskInput} value={task.name} autoComplete="off" onChange={handleInputChange} />
+                            <span>TASK ID</span>
+                            <div>{task.id}</div>
                         </label>
 
-                        <label htmlFor="url"><span>URL</span>
-                        <input type="text" id="url" name="url" className={styles.taskInput} value={task.url} autoComplete="off" onChange={handleInputChange} />
+                        <label htmlFor="name"><span>TASK NAME</span>
+                            <input type="text" id="name" name="name" className={styles.taskInput} value={task.name} autoComplete="off" onChange={handleInputChange} />
                         </label>
-                        <label htmlFor="completed"><span>Completed</span>
-                        <input type="checkbox" id="completed" name="completed" checked={task.completed} onChange={handleCheckboxChange} />
+
+                        <label htmlFor="url"><span>TASK URL</span>
+                            <input type="text" id="url" name="url" className={styles.taskInput} value={task.url} autoComplete="off" onChange={handleInputChange} />
+                        </label>
+                        <label htmlFor="completed"><span>TASK Completed</span>
+                            <input type="checkbox" id="completed" name="completed" checked={task.completed} onChange={handleCheckboxChange} />
                         </label>
 
                         <div className={styles.formAlert}>
