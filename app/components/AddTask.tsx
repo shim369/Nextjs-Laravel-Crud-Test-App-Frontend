@@ -1,21 +1,24 @@
-import { useState, ChangeEvent, FormEvent } from "react";
+import { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import styles from "../page.module.css";
 import axios from 'axios';
 import { Todo } from "@/types/todo";
 
 export default function AddTask() {
     const [task, setTask] = useState<Todo>({ id: 0, name: '', url: '', completed: false });
+    const [errors, setErrors] = useState<string[]>([]); 
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        let errors = [];
+        let errors: string[] = [];
+        
         if (!task.name) {
             errors.push("Task name is required!")
         }
         if (!task.url) {
             errors.push("Task url is required!")
         }
+        setErrors(errors);
         if (!errors.length) {
             let formData = new FormData();
             formData.append('name', task.name);
@@ -23,11 +26,9 @@ export default function AddTask() {
             let url = 'http://127.0.0.1:8000/api/save_task';
             try {
                 const response = await axios.post(url, formData);
-                // console.log(response);
                 if (response.status == 200) {
                     alert(response.data.message);
-                } else {
-                    console.log('error');
+                    setTask({ id: 0, name: '', url: '', completed: false });
                 }
             } catch (error: any) {
                 errors.push(error.response);
@@ -54,7 +55,9 @@ export default function AddTask() {
                 </label>
                 <div className={styles.formAlert}>
                     <ul>
-                        <li></li>
+                        {errors.map((error, index) => (
+                        <li key={index}>{error}</li>
+                        ))}
                     </ul>
                 </div>
                 <button type="submit" className={styles.formSubmit}>Submit</button>

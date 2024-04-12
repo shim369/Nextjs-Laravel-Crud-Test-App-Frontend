@@ -14,6 +14,7 @@ type Props = {
 export default function Page({ params }: Props) {
     const { id } = params;
     const [task, setTask] = useState<Todo>({ id: 0, name: '', url: '', completed: false });
+    const [errors, setErrors] = useState<string[]>([]);
 
     useEffect(() => {
         const getTaskById = async () => {
@@ -49,10 +50,14 @@ export default function Page({ params }: Props) {
 
     const updateTask = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        let errors = [];
+        let errors: string[] = [];
         if (!task.name) {
             errors.push("Task name is required!")
         }
+        if (!task.url) {
+            errors.push("Task url is required!")
+        }
+        setErrors(errors);
         if (!errors.length) {
             let formData = new FormData();
             formData.append('name', task.name);
@@ -96,7 +101,9 @@ export default function Page({ params }: Props) {
 
                         <div className={styles.formAlert}>
                             <ul>
-                                <li></li>
+                                {errors.map((error, index) => (
+                                <li key={index}>{error}</li>
+                                ))}
                             </ul>
                         </div>
                         <button type="submit" className={styles.formSubmit}>Edit</button>
