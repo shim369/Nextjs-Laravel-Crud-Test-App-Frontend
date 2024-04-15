@@ -10,6 +10,11 @@ export default function AddTask() {
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
+        const data = {
+            name: task.name,
+            url: task.url,
+        }
+
         let errors: string[] = [];
         
         if (!task.name) {
@@ -20,12 +25,12 @@ export default function AddTask() {
         }
         setErrors(errors);
         if (!errors.length) {
-            let formData = new FormData();
-            formData.append('name', task.name);
-            formData.append('url', task.url);
+            // let formData = new FormData();
+            // formData.append('name', task.name);
+            // formData.append('url', task.url);
             let url = 'http://127.0.0.1:8000/api/save_task';
             try {
-                const response = await axios.post(url, formData);
+                const response = await axios.post(url, data);
                 if (response.status == 200) {
                     alert(response.data.message);
                     setTask({ id: 0, name: '', url: '', completed: false });
