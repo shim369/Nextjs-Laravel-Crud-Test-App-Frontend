@@ -25,15 +25,11 @@ export default function AddTask() {
         }
         setErrors(errors);
         if (!errors.length) {
-            // let formData = new FormData();
-            // formData.append('name', task.name);
-            // formData.append('url', task.url);
-            let url = 'http://127.0.0.1:8000/api/save_task';
             try {
+                let url = 'http://127.0.0.1:8000/api/save_task';
                 const response = await axios.post(url, data);
                 if (response.status == 200) {
                     alert(response.data.message);
-                    setTask({ id: 0, name: '', url: '', completed: false });
                 }
             } catch (error: any) {
                 errors.push(error.response);

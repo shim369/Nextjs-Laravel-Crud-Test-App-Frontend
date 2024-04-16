@@ -11,10 +11,9 @@ export default function Home() {
 
   useEffect(() => {
     const getAllTasks = async () => {
-      let url = 'http://127.0.0.1:8000/api/tasks';
       try {
+        let url = 'http://127.0.0.1:8000/api/tasks';
         const response = await axios.get(url);
-        // console.log(response);
         setTodos(response.data.tasks);
       } catch (error) {
         console.log(error);
@@ -25,8 +24,8 @@ export default function Home() {
   }, [todos]);
 
   const deleteTask = async (id: Number) => {
-    let url = `http://127.0.0.1:8000/api/delete_task/${id}`;
     try {
+      let url = `http://127.0.0.1:8000/api/delete_task/${id}`;
       const response = await axios.delete(url);
       if (response.data.code == 200) {
         alert(response.data.message);

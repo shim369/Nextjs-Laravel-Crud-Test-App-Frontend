@@ -50,6 +50,13 @@ export default function Page({ params }: Props) {
 
     const updateTask = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
+        const data = {
+            name: task.name,
+            url: task.url,
+            completed: task.completed ? '1' : '0'
+        }
+
         let errors: string[] = [];
         if (!task.name) {
             errors.push("Task name is required!")
@@ -59,13 +66,9 @@ export default function Page({ params }: Props) {
         }
         setErrors(errors);
         if (!errors.length) {
-            let formData = new FormData();
-            formData.append('name', task.name);
-            formData.append('url', task.url);
-            formData.append('completed', task.completed ? '1' : '0');
-            let url = `http://127.0.0.1:8000/api/update_task/${id}`;
             try {
-                const response = await axios.post(url, formData);
+                let url = `http://127.0.0.1:8000/api/update_task/${id}`;
+                const response = await axios.post(url, data);
                 if (response.status === 200) {
                     alert(response.data.message);
                 } else {
