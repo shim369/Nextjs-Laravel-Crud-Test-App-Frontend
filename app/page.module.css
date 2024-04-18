@@ -41,6 +41,7 @@
 }
 
 .addBox input[type="text"] {
+    all: unset;
     width: 80%;
     border: none;
     padding: 1rem 1.2rem;
