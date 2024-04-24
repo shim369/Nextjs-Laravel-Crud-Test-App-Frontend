@@ -6,25 +6,30 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { Todo } from "@/types/todo";
 
-export default function TaskList(props: { todo: Todo; onDeleteClick: (id: number) => void }) {
+interface TaskListProps {
+    task: Todo,
+    onDeleteClick: (id: number) => void
+}
+
+export default function TaskList({ task, onDeleteClick }: TaskListProps) {
     const handleDeleteClick = () => {
-        props.onDeleteClick(props.todo.id);
+        onDeleteClick(task.id);
     };
 
     return (
-        <div className={styles.singleTask} key={props.todo.id}>
+        <div className={styles.singleTask} key={task.id}>
             <div className={styles.taskName}>
                     <span className={styles.check}>
-                        {Number(props.todo.completed) === 1 && (
+                        {Number(task.completed) === 1 && (
                         <FontAwesomeIcon icon={faCheck} />
                         )}
                     </span>
                 <h2>
-                    <Link href={props.todo.url} target="_blank">{props.todo.name}</Link>
+                    <Link href={task.url} target="_blank">{task.name}</Link>
                 </h2>
             </div>
             <div className={styles.taskLinks}>
-                <Link className={styles.editLink} href={`edit/${props.todo.id}`}>
+                <Link className={styles.editLink} href={`edit/${task.id}`}>
                     <FontAwesomeIcon icon={faPenToSquare} />
                 </Link>
                 <button type="submit" onClick={handleDeleteClick} className={styles.deleteBtn}>
